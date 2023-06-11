@@ -3,7 +3,7 @@ import { db } from "../firebase"
 import { collection, getDocs, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
 
-function Category() {
+function Animal() {
     const { categoryId } = useParams()
     const [ categoryItems, setCategoryItems ] = useState()
     
@@ -33,4 +33,4 @@ function Category() {
     )
 }
 
-export default Category
+export default Animal
