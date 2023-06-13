@@ -2,6 +2,25 @@ import { NavLink, useParams } from "react-router-dom"
 import { db } from "../firebase"
 import { collection, getDocs, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const StyledNavLink = styled(NavLink)`
+    margin: 10px;
+    font-size: 30px;
+    transition: 0.5s;
+    
+    &:hover {
+        background-color: gray;
+    }
+`
 
 function Category() {
     const { categoryId } = useParams()
@@ -18,18 +37,16 @@ function Category() {
     }, [categoryId])
 
     return (
-        <div>
-            <ul>
+        <Wrapper>
             {categoryItems && categoryItems.map((doc) => (
-                <li>
-                <NavLink
-                to={`/${categoryId}/${doc.id}`}>
-                {doc.id}
-                </NavLink>
-                </li> 
+                <StyledNavLink
+                    to={`/${categoryId}/${doc.id}`}
+                    key={doc.id}
+                >
+                    {doc.id}
+                </StyledNavLink>
             ))}
-            </ul>
-        </div>
+        </Wrapper>
     )
 }
 

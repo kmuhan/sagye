@@ -5,7 +5,19 @@ import { useEffect, useState } from "react"
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const P = styled.p`
+    font-size: ${props => props.fontSize || '20px'};
+    margin: 10px;
 `
 
 function Country() {
@@ -23,14 +35,16 @@ function Country() {
     }, [id])
     
     return (
-        <div>
+        <Wrapper>
             {countryData !== undefined &&
-            <>
-                <div>{id}</div>
-                <div>{countryData.language}</div>
-            </>
+            <Container>
+                <P fontSize="30px">{id}</P>
+                <P>Continet: {countryData.continent}</P>
+                <P>Capital: {countryData.capital}</P>
+                <P>Language: {countryData.language}</P>
+            </Container>
             }
-        </div>
+        </Wrapper>
     )
 }
 
